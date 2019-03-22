@@ -8,8 +8,8 @@ var push_data = {
 	to: client_token,
 
 	notification: {
-		title: "유치원통학버스봇",
-		body: "벵거님이 승차하였습니다. 벵거님 부모님께 발송하는 메세지입니다.",
+		title: "Arsene's title.",
+		body: "Arsene's body.",
 		sound: "default",
 		click_action: "FCM_PLUGIN_ACTIVITY",
 		icon: "fcm_push_icon"
@@ -29,11 +29,11 @@ var fcm = new FCM(serverKey);
 
 fcm.send(push_data, function(err, response) {
 	if(err) {
-		console.error('Push메시지 발송에 실패했습니다.');
+		console.error('Push error ?? I do not know.');
 		console.error(err);
 		return;
 	}
 
-	console.log('Push메시지가 발송되었습니다.');
+	console.log('Push message is ??? hmm.');
 	console.log(response);
 });

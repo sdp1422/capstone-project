@@ -72,7 +72,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 		Id = Id[0]
 		# Check the ID if exist
 		if(Id == 1):
-			if accuracy <= 100:
+			if accuracy <= 150:
 				Id = "SangDonPark"
 				msgText = ''
 				childNum = firebase.get('/childNum/number',None)
@@ -101,7 +101,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 			# cv2.putText(image, str(Id), (x,y-40), font, 2, (255,255,255), 3)
 		#If not exist, then it is Unknown
 		elif(Id == 2):
-              		if accuracy <= 80:
+              		if accuracy <= 150:
 				Id = "ArseneWenger"
 				msgText = ''
 				childNum = firebase.get('/childNum/number',None)
@@ -109,15 +109,17 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 				if(isWgUp == False):
 					cmd = 'node /home/pi/Documents/nodejs/fcm_test1_wg_up.js'
 					isWgUp = True
-					msgText = '벵거님이 승차하였습니다. 벵거님 부모님께 발송하는 메세지입니다.'
+					msgText = 'arseneWenger messege!'
 					childNum = childNum+1
-					isBusUp = '승차'
+					isBusUp = 'ArseneWenger is up.'
+                                        print('arsene is up.')
 				else:
 					cmd = 'node /home/pi/Documents/nodejs/fcm_test1_wg_down.js'
 					isWgUp = False
-					msgText = '벵거님이 하차하였습니다. 벵거님 부모님께 발송하는 메세지입니다.'
+					msgText = 'ArseneWenger message!!'
 					childNum = childNum-1
-					isBusUp = '하차'
+					isBusUp = 'ArseneWenger is down.'
+                                        print('arsene is down.')
 				subprocess.call(cmd,shell=True)
 				now = time.localtime()
 				timeNow = "%02d-%02d-%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec)
@@ -139,7 +141,10 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 		cv2.putText(image, str(Id), (x,y-40), font, 2, (255,255,255), 3)
 
 	# Display the video frame with the bounded rectangle
-	cv2.imshow('image',image)
+        
+        
+        # sangdon's message : this is lag.
+        # cv2.imshow('image',image)
 
 	rawCapture.truncate(0)
 

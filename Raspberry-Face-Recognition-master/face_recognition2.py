@@ -103,7 +103,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
                         
                         msgText = ''
                         msgText += str(user_name[i]) + ' is bus ' + msgIsUp
-                        timeStamp = str(int(time.time()))
+                        timeStamp = str(int(time.time() * 1000))
                         print('user_name = ' + str(user_name[i]))
                         print('user_uid = ' + str(user_uid[i]))
                         print('user_is_up = ' + str(user_is_up[i]))

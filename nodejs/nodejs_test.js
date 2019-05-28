@@ -5,6 +5,7 @@ var options = {
 
   mode: 'text',
 
+  //pythonPath: '/usr/bin/python2.7',
   pythonPath: '',
 
   pythonOptions: ['-u'],
@@ -16,7 +17,7 @@ var options = {
 };
 
 
-PythonShell.run('../Raspberry-Face-Recognition-master/test4.py', options, function (err, results) {
+PythonShell.run('../Raspberry-Face-Recognition-master/face_recognition2.py', options, function (err, results) {
 
   if (err) throw err;
 

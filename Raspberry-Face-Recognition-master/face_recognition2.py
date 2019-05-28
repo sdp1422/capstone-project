@@ -83,7 +83,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 		
 		size = len(user_name)
 		for i in range(1, size + 1):
-                    if i == id && accuracy <= 150:
+                    if i == id and accuracy <= 150:
                         user_is_up[i] = not user_is_up[i]
                         childNum = firebase.get('/childNum/number',None)
                         isBusUp = firebase.get('/childIsBusUp/'+ str(user_is_up[i]),None)
@@ -98,14 +98,14 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
                             msgIsUp = 'down'
                         
                         msgText = ''
-                        msgText += str(user_name[i]) + 'is bus ' + msgIsUp
+                        msgText += str(user_name[i]) + ' is bus ' + msgIsUp
                         timeStamp = str(int(time.time()))
                         print('user_name = ' + str(user_name[i]))
                         print('user_uid = ' + str(user_uid[i]))
                         print('user_is_up = ' + str(user_is_up[i]))
                         print('childNum = ' + str(childNum))
                         print('isBusUp = ' + str(isBusUp))
-                        print('msgText = ' + mstText)
+                        print('msgText = ' + msgText)
                         
                         
                         userModel = {

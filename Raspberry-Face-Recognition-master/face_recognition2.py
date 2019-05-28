@@ -122,7 +122,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
                         firebase.put('childIsBusUp', str(user_uid[i]), str(user_is_up[i]))
                         
                         registration_id = "e32Gvxx090M:APA91bGA8LLICfvLdbRP-fvm7ga5Yb7Sv8Xia0kp_ocjLCaldu5v1prSr5FlTqyC722QCWFJK4YNDIvsNAPSViWYBjdaEPcN8PpUaEojPKEeCXOlqKC3GojhoD3Mcl8gMCemj5_X8wWq"
-                        message_title = "KBMT Message"
+                        message_title = "KBMS Message"
                         message_body = msgText
                         result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title, message_body=message_body)
 

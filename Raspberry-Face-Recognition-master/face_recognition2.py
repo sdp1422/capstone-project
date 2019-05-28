@@ -44,12 +44,12 @@ time.sleep(0.1)
 user_name = []
 user_name.append('user none')
 user_name.append('sdp14222')
-user_name.append('sdp1422j')
+user_name.append('psd14222')
 
 user_uid = []
 user_uid.append('user uid none')
 user_uid.append('I4UeW6sbCBUWF4ZlYIpDcBdorhq2')
-user_uid.append('tdANSqXd5IV87HN2SCr9VBBb62I3')
+user_uid.append('HxYcAOS8lJYQxeWxxMXoKqV4V7m2')
 
 user_is_up = []
 user_is_up.append(True)
@@ -122,8 +122,8 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
                         firebase.put('childIsBusUp', str(user_uid[i]), str(user_is_up[i]))
                         
                         registration_id = "e32Gvxx090M:APA91bGA8LLICfvLdbRP-fvm7ga5Yb7Sv8Xia0kp_ocjLCaldu5v1prSr5FlTqyC722QCWFJK4YNDIvsNAPSViWYBjdaEPcN8PpUaEojPKEeCXOlqKC3GojhoD3Mcl8gMCemj5_X8wWq"
-                        message_title = "Hahahaha"
-                        message_body = "Hi john, your customized news for today is ready"
+                        message_title = "KBMT Message"
+                        message_body = msgText
                         result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title, message_body=message_body)
 
 		# Put text describe who is in the picture

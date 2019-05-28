@@ -6,6 +6,7 @@ from picamera import PiCamera
 import time
 import subprocess
 from firebase import firebase
+from pyfcm import FCMNotification
 
 # Import numpy for matrices calculations
 import numpy as np
@@ -13,12 +14,14 @@ import numpy as np
 # Create Local Binary Patterns Histograms for face recognization
 # recognizer = cv2.face.createLBPHFaceRecognizer()
 recognizer = cv2.face_LBPHFaceRecognizer.create()
+# recognizer = cv2.face.LBPHFaceRecognizer_create()
 
 firebase = firebase.FirebaseApplication('https://kbms-bot.firebaseio.com/')
 
 # Load the trained mode
 # recognizer.load('trainer/trainer.yml')
 recognizer.read('trainer/trainer.yml')
+# recognizer.read('trainer/trainer.yml')
 
 # Load prebuilt model for Frontal Face
 cascadePath = "haarcascade_frontalface_default.xml"
@@ -53,8 +56,9 @@ user_is_up.append(True)
 user_is_up.append(False)
 user_is_up.append(False)
 
-isSdpUp = False
-isWgUp = False
+api_key = "AAAAyW2dkpk:APA91bHWFYE4xIDX9JOWix6SKukgeH-AWfTrBe9b3G-XNO-9V0uNc-L6ngEQ929HEFB1r1G_KBbagdVSR895cMOg3KErvJR_jG7yQvVu5w1rr310u6ynyi_dg7CSYNtpgrh82q5hJhin"
+
+push_service = FCMNotification(api_key=api_key)
 
 # Loop
 for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=True):
@@ -117,11 +121,14 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
                         firebase.put('childNum','number',childNum)
                         firebase.put('childIsBusUp', str(user_uid[i]), str(user_is_up[i]))
                         
-                        
+                        registration_id = "e32Gvxx090M:APA91bGA8LLICfvLdbRP-fvm7ga5Yb7Sv8Xia0kp_ocjLCaldu5v1prSr5FlTqyC722QCWFJK4YNDIvsNAPSViWYBjdaEPcN8PpUaEojPKEeCXOlqKC3GojhoD3Mcl8gMCemj5_X8wWq"
+                        message_title = "Hahahaha"
+                        message_body = "Hi john, your customized news for today is ready"
+                        result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title, message_body=message_body)
 
 		# Put text describe who is in the picture
 		cv2.rectangle(image, (x-22,y-90), (x+w+22, y-22), (0,255,0), -1)
-		cv2.putText(image, str(Id), (x,y-40), font, 2, (255,255,255), 3)
+		# cv2.putText(image, str(Id), (x,y-40), font, 2, (255,255,255), 3)
 
 	# Display the video frame with the bounded rectangle
         

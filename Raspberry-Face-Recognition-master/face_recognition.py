@@ -80,19 +80,19 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 				if(isSdpUp == False):
 					cmd = 'node /home/pi/Documents/nodejs/fcm_test1_sdp_up.js'
 					isSdpUp = True
-					msgText = '박상돈님이 승차하였습니다. 박상돈님 부모님께 발송하는 메세지입니다.'
+					msgText = '박상돈님이 승차하였습니다.'
 					childNum = childNum+1
 					isBusUp = '승차'
 				else:
 					cmd = 'node /home/pi/Documents/nodejs/fcm_test1_sdp_down.js'
 					isSdpUp = False
-					msgText = '박상돈님이 하차하였습니다. 박상돈님 부모님께 발송하는 메세지입니다.'
+					msgText = '박상돈님이 하차하였습니다.'
 					childNum = childNum-1
 					isBusUp = '하차'
 				subprocess.call(cmd,shell=True)
 				now = time.localtime()
 				timeNow = "%02d-%02d-%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec)
-				result = firebase.post('/I4UeW6sbCBUWF4ZlYIpDcBdorhq2',{'msgText':msgText,'msgUser':'bot','time':timeNow})
+				result = firebase.post('/chatmodel/I4UeW6sbCBUWF4ZlYIpDcBdorhq2',{'msgText':msgText,'msgUser':'bot','time':timeNow})
 				firebase.put('childNum','number',childNum)
 				firebase.put('childIsBusUp','I4UeW6sbCBUWF4ZlYIpDcBdorhq2',isBusUp)
 				time.sleep(3)
@@ -109,21 +109,21 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 				if(isWgUp == False):
 					cmd = 'node /home/pi/Documents/nodejs/fcm_test1_wg_up.js'
 					isWgUp = True
-					msgText = 'arseneWenger messege!'
+					msgText = '벵거님이 승차하였습니다.'
 					childNum = childNum+1
 					isBusUp = 'ArseneWenger is up.'
                                         print('arsene is up.')
 				else:
 					cmd = 'node /home/pi/Documents/nodejs/fcm_test1_wg_down.js'
 					isWgUp = False
-					msgText = 'ArseneWenger message!!'
+					msgText = '벵거님이 하차하였습니다.'
 					childNum = childNum-1
 					isBusUp = 'ArseneWenger is down.'
                                         print('arsene is down.')
 				subprocess.call(cmd,shell=True)
 				now = time.localtime()
 				timeNow = "%02d-%02d-%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec)
-				result = firebase.post('/HxYcAOS8lJYQxeWxxMXoKqV4V7m2',{'msgText':msgText,'msgUser':'bot','time':timeNow})
+				result = firebase.post('/chatmodel/HxYcAOS8lJYQxeWxxMXoKqV4V7m2',{'msgText':msgText,'msgUser':'bot','time':timeNow})
 				firebase.put('childNum','number',childNum)
 				firebase.put('childIsBusUp','HxYcAOS8lJYQxeWxxMXoKqV4V7m2',isBusUp)
 				time.sleep(3)

@@ -72,7 +72,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 		Id = Id[0]
 		# Check the ID if exist
 		if(Id == 1):
-			if accuracy <= 150:
+			if accuracy <= 75:
 				Id = "SangDonPark"
 				msgText = ''
 				childNum = firebase.get('/childNum/number',None)
@@ -102,7 +102,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 			# cv2.putText(image, str(Id), (x,y-40), font, 2, (255,255,255), 3)
 		#If not exist, then it is Unknown
 		elif(Id == 2):
-              		if accuracy <= 150:
+              		if accuracy <= 75:
 				Id = "ArseneWenger"
 				msgText = ''
 				childNum = firebase.get('/childNum/number',None)

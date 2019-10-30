@@ -92,7 +92,7 @@ for frame in camera.capture_continuous(rawCapture,format="bgr",use_video_port=Tr
 				subprocess.call(cmd,shell=True)
 				now = time.localtime()
 				timeNow = "%02d-%02d-%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec)
-                                result = firebase.post('/chatmodel/I4UeW6sbCBUWF4ZlYIpDcBdorhq2',{'message':msgText,'timeStamp':timeNow, 'userModel': {'name': 'bot','photo_profile':'https://cdn.imgbin.com/4/0/14/imgbin-robotics-technology-computer-icons-internet-bot-robotics-black-robot-face-illustration-RLFfkWFiZBkWMdYpMVEefSgC0.jpg'})
+                                result = firebase.post('/chatmodel/I4UeW6sbCBUWF4ZlYIpDcBdorhq2',{'message':msgText,'timeStamp':timeNow, 'userModel': {'name': 'bot','photo_profile':'https://cdn.imgbin.com/4/0/14/imgbin-robotics-technology-computer-icons-internet-bot-robotics-black-robot-face-illustration-RLFfkWFiZBkWMdYpMVEefSgC0.jpg'}})
 				firebase.put('childNum','number',childNum)
 				firebase.put('childIsBusUp','I4UeW6sbCBUWF4ZlYIpDcBdorhq2',isBusUp)
 				time.sleep(3)

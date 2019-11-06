@@ -21,10 +21,10 @@ var push_data = {
 
 	restricted_package_name: "alessandro.firebaseandroid",
 
-	data: {
-		num1:2000,
-		num2:3000
-	}
+	//data: {
+	//	num1:2000,
+	//	num2:3000
+	//}
 };
 
 var fcm = new FCM(serverKey);
